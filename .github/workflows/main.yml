@@ -19,7 +19,7 @@ jobs:
       - name: Cria os arquivos para Deploy
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build  # Substitua "build" pelo caminho onde os arquivos do seu site estão
+          path: 
 
       - name: Publica no GitHub Pages
         uses: actions/deploy-pages@v1
