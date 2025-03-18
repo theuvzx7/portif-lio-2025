@@ -17,8 +17,8 @@ steps:
 
   - name: Cria os arquivos para Deplay
     uses: actions/uploud-pages-artifact@v3
-    with:
+  with:
      pach:
 
    - name: Publica no Gitpages
-    uses: actions/deploy-pages@v1
+     uses: actions/deploy-pages@v1
