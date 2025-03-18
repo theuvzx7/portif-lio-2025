@@ -1,4 +1,4 @@
-name: Deplay para paginas do Github
+name: Deplay para paginas do GitHub
 
 on:
   push:
@@ -17,8 +17,8 @@ steps:
 
   - name: Cria os arquivos para Deplay
     uses: actions/uploud-pages-artifact@v3
-  with:
+    with:
      pach:
 
-   - name: Publica no Gitpages
+   - name: Publica no GitPages
      uses: actions/deploy-pages@v1
