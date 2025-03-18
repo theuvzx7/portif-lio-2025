@@ -1,0 +1,125 @@
+/* Definindo a paleta de cores */
+:root {
+    --cor-primaria: #4a90e2; /* Azul */
+    --cor-secundaria: #8e44ad; /* Roxo */
+    --cor-fundo: #f4f4f9;
+    --cor-texto: #333;
+}
+
+/* Resetando margens e paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Merriweather', serif; /* Aplicando a fonte Merriweather */
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Cabeçalho */
+header {
+    background-color: var(--cor-primaria);
+    padding: 20px 0;
+    color: white;
+    text-align: center;
+    position: relative; /* Permite o posicionamento da imagem dentro do cabeçalho */
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 2.5rem; /* Tamanho maior para o título */
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem; /* Um pouco maior que o padrão */
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para a imagem no cabeçalho */
+.foto-perfil {
+    position: absolute; /* Posicionamento absoluto dentro do cabeçalho */
+    top: 20px; /* Distância do topo */
+    right: 20px; /* Distância da borda direita */
+    width: 60px; /* Tamanho da imagem */
+    height: 60px; /* Tamanho da imagem */
+    border-radius: 50%; /* Deixa a imagem redonda */
+    border: 3px solid white; /* Borda branca ao redor da imagem */
+}
+
+/* Seções */
+section {
+    padding: 40px 0;
+}
+
+section h2 {
+    color: var(--cor-secundaria);
+    margin-bottom: 20px;
+    font-size: 2rem; /* Tamanho maior para o subtítulo */
+    font-weight: 700; /* Mais negrito para o subtítulo */
+}
+
+.projeto {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.projeto h3 {
+    color: var(--cor-primaria);
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.projeto p {
+    font-size: 1rem;
+}
+
+/* Rodapé */
+footer {
+    background-color: var(--cor-secundaria);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+
