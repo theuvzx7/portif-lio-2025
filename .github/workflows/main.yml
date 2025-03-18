@@ -1,24 +1,26 @@
-name: Deplay para paginas do GitHub
+name: Deploy para páginas do GitHub
 
 on:
   push:
     branches:
-       -main
+      - main
+
 jobs:
-  deplay:
+  deploy:
     runs-on: ubuntu-latest
 
-steps:
-  - name: Checa o repositorio
-    uses: actions/chekout@v3
+    steps:
+      - name: Checa o repositório
+        uses: actions/checkout@v3
 
-  - name: Configura Github Pages
-    uses: actions/configure-pages@v3
+      - name: Configura GitHub Pages
+        uses: actions/configure-pages@v3
 
-  - name: Cria os arquivos para Deploy
-    uses: actions/upload-pages-artifact@v3
-    with:
-     pach:
+      - name: Cria os arquivos para Deploy
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./build  # Substitua "build" pelo caminho onde os arquivos do seu site estão
 
-   - name: Publica no GitPages
-     uses: actions/deploy-pages@v1
+      - name: Publica no GitHub Pages
+        uses: actions/deploy-pages@v1
+
