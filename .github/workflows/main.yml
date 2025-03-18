@@ -1,0 +1,24 @@
+name: Deplay para paginas do Githud
+
+on:
+  push:
+    branches:
+       -main
+jobs:
+  deplay:
+    runs-on: ubuntu-latest
+
+steps:
+  - name: Checa o repositorio
+    uses: actions/chekout@v3
+
+  - name: Configura Githud Pages
+    uses: actions/configure-pages@v3
+
+  - name: Cria os arquivos para Deplay
+    uses: actions/uploud-pages-artifact@v3
+    with:
+     pach:
+
+   - name: Publica no Gitpages
+    uses: actions/deploy-pages@v1
