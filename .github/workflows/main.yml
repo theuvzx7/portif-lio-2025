@@ -26,14 +26,12 @@ jobs:
       - name: Checkout o repositório
         uses: actions/checkout@v4
 
-      # Não é necessário configurar Jekyll, já que estamos lidando com arquivos HTML e CSS simples
-      # Mas caso haja necessidade de algum processamento, você pode colocar aqui.
-
-      # Se estiver usando arquivos na pasta "build" ou "dist", defina isso no próximo passo:
+      # Copia os arquivos HTML e CSS para o diretório de deploy (build)
       - name: Prepara o conteúdo do site para deploy
         run: |
           mkdir -p ./build
-          cp -r * ./build/  # Copia todos os arquivos para a pasta "build" (se necessário)
+          cp html.html ./build/index.html  # Copia o arquivo HTML para o diretório build como index.html
+          cp -r css ./build/  # Copia a pasta css com o arquivo css.css para o diretório build
       
       # Upload do artefato (arquivos que serão usados no GitHub Pages)
       - name: Upload artefato
