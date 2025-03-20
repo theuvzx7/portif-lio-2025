@@ -1,56 +1,30 @@
-name: Deploy HTML e CSS no GitHub Pages
+name: Deploy para GitHub Pages
 
 on:
-  # Aciona o workflow quando há push na branch "main"
   push:
     branches:
-      - main
-  # Permite acionar manualmente pelo tab "Actions"
-  workflow_dispatch:
+      - main  # Executa quando há mudanças na branch principal
 
-# Define permissões para o token do GitHub
 permissions:
-  contents: read  # Permite ler o conteúdo do repositório
-  pages: write  # Permite publicar páginas no GitHub Pages
-
-# Configurações para o controle de concorrência, garantindo que apenas um deploy ocorra por vez
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
-  # Job para o build (não necessário em sites estáticos simples, mas podemos usar para preparar o conteúdo)
-  build:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout o repositório
+      - name: Checkout do repositório
         uses: actions/checkout@v4
 
-      # Copia os arquivos HTML e CSS para o diretório de deploy (build)
-      - name: Prepara o conteúdo do site para deploy
-        run: |
-          mkdir -p ./build
-          cp html.html ./build/index.html  # Copia o arquivo HTML para o diretório build como index.html
-          cp -r css ./build/  # Copia a pasta css com o arquivo css.css para o diretório build
-      
-      # Upload do artefato (arquivos que serão usados no GitHub Pages)
-      - name: Upload artefato
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./build  # Caminho para os arquivos HTML e CSS
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
 
-  # Job para o deploy no GitHub Pages
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy no GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Criar artefato para deploy
+        uses: actions/upload-pages-artifact@v3  # Pode tentar também @v2 se funcionar
         with:
-          # Ação de deploy dos arquivos do artefato para o GitHub Pages
-          branch: gh-pages  # Certifique-se de que a branch 'gh-pages' será usada para o deploy
-          folder: ./build   # O diretório onde estão os arquivos finais (HTML e CSS)
+          path: .  # Publica todos os arquivos do repositório
+
+      - name: Publicar no GitHub Pages
+        uses: actions/deploy-pages@v4
