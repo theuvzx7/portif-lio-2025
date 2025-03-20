@@ -10,20 +10,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checa o repositório
+      # 1. Verifica o repositório
+      - name: Checar o repositório
         uses: actions/checkout@v3
 
-      - name: Configura GitHub Pages
+      # 2. Configurar GitHub Pages
+      - name: Configurar GitHub Pages
         uses: actions/configure-pages@v3
 
-      - name: Cria os arquivos para Deploy
-        uses: actions/upload-pages-artifact@v2
+      # 3. Construir o projeto (se necessário)
+      - name: Construir os arquivos para deploy
+        run: |
+          # Exemplo para projetos Node.js:
+          # Instala as dependências e gera os arquivos estáticos
+          npm install
+          npm run build
+          
+          # Exemplo para projetos Jekyll:
+          # Se o seu projeto for baseado no Jekyll, use:
+          # bundle install
+          # bundle exec jekyll build
+          
+          # Caso o projeto não precise de construção, você pode omitir este passo.
+
+      # 4. Publicar no GitHub Pages
+      - name: Publicar no GitHub Pages
+        uses: actions/deploy-pages@v1
         with:
-          path: ./build  # Substitua "build" pelo diretório correto onde os arquivos do seu site estão
-
-      - name: Publica no GitHub Pages
-        uses: actions/deploy-pages@v1
-
-
-        uses: actions/deploy-pages@v1
-
+          # Defina o caminho para os arquivos estáticos gerados
+          # Caso você tenha uma pasta chamada 'build' ou 'dist', adicione o caminho aqui:
+          folder: ./build   # Altere para 'dist', 'public' ou a pasta que seu projeto gera os arquivo
