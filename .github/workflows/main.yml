@@ -24,3 +24,6 @@ jobs:
       - name: Publica no GitHub Pages
         uses: actions/deploy-pages@v1
 
+
+        uses: actions/deploy-pages@v1
+
